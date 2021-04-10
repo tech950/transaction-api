@@ -1,0 +1,2 @@
+insert into account(id, account_number, balance, currency, created_at) values(1000, 5555, 3000.00, 'GBP', '2021-03-10');
+insert into account(id, account_number, balance, currency, created_at) values(1001, 4444, 6000.00, 'GBP', '2021-03-10');

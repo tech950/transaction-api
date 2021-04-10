@@ -3,10 +3,12 @@ package com.zzz.banking.account.dataobject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(name = "ACCOUNT")
 public class AccountDO {
 
     @Id
@@ -16,6 +18,9 @@ public class AccountDO {
     private BigDecimal balance;
     private String currency;
     private Date createdAt;
+
+    public AccountDO() {
+    }
 
     public AccountDO(Long accountNumber, BigDecimal balance, String currency, Date createdAt) {
         this.accountNumber = accountNumber;
@@ -30,6 +35,10 @@ public class AccountDO {
 
     public Long getAccountNumber() {
         return accountNumber;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public BigDecimal getBalance() {

@@ -17,6 +17,9 @@ Openapi 3.0 supports servers dropdown in swagger-ui. This can be used to test th
 View Health checks at
 http://localhost:8080/actuator/health
 
+Explore H2 db at
+http://localhost:8080/h2-console
+
 Jacoco Code coverage is available at target\site\jacoco\index.html
 
 #Assumptions

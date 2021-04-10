@@ -1,9 +1,13 @@
 package com.zzz.banking.transaction.dataobject;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "TRANSACTION")
 public class TransactionDO {
 
     @Id
@@ -14,6 +18,9 @@ public class TransactionDO {
     private BigDecimal amount;
     private String currency;
 
+    public TransactionDO() {
+    }
+
     public TransactionDO(Long sourceAccountId, Long targetAccountId, BigDecimal amount, String currency) {
         this.sourceAccountId = sourceAccountId;
         this.targetAccountId = targetAccountId;
@@ -23,6 +30,10 @@ public class TransactionDO {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getSourceAccountId() {
