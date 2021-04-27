@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -39,7 +40,7 @@ public class TransactionControllerTest {
                 "}";
         Date date = Date.from(LocalDateTime.of(2021, 10, 9, 6, 30)
                 .atZone(ZoneId.systemDefault()).toInstant());
-        when(transactionService.transferAmount(new Transaction()))
+        when(transactionService.transferAmount(any()))
                 .thenReturn(new TransactionResult(Long.valueOf(11), new Account(Long.valueOf(5555),
                         BigDecimal.valueOf(3000.00), "GBP", date), new Account(Long.valueOf(4444),
                         BigDecimal.valueOf(6000.00), "GBP", date)));

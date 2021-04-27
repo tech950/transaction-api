@@ -7,10 +7,11 @@ java -jar target/transaction-api-0.0.1-SNAPSHOT.jar
 ```
 OR
 ```
+./mvnw clean package
 ./mvnw spring-boot:run
 ```
-Use swagger-ui to view Transaction API documentation 
-http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+Use swagger-ui to view Transaction API documentation
+http://localhost:8080/swagger-ui.html
 
 Openapi 3.0 supports servers dropdown in swagger-ui. This can be used to test the transaction API.
 
