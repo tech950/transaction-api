@@ -22,6 +22,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class TransactionServiceTest {
@@ -109,10 +110,12 @@ public class TransactionServiceTest {
         when(accountCollection.findByAccountNumber(Long.valueOf(4444))).thenReturn(Optional.of(targetAccount));
         TransactionDO transactionDO = new TransactionDO(Long.valueOf(5555),
                 Long.valueOf(4444), BigDecimal.valueOf(10.00), "GBP");
-        when(transactionCollection.save(transactionDO)).thenReturn(transactionDO);
-//        TransactionResult result = transactionService.transferAmount(new Transaction(Long.valueOf(5555),
-//                Long.valueOf(4444), BigDecimal.valueOf(10.00), "GBP"));
-//        assertEquals(sourceAccount, result.getSourceAccount());
-//        assertEquals(targetAccount, result.getTargetAccount());
+        TransactionDO savedDO = transactionDO;
+        savedDO.setId(Long.valueOf(1212));
+        when(transactionCollection.save(any())).thenReturn(savedDO);
+        TransactionResult result = transactionService.transferAmount(new Transaction(Long.valueOf(5555),
+                Long.valueOf(4444), BigDecimal.valueOf(10.00), "GBP"));
+        assertEquals(sourceAccount.getBalance(), result.getSourceAccount().getBalance());
+        assertEquals(targetAccount.getBalance(), result.getTargetAccount().getBalance());
     }
 }
